@@ -9,3 +9,10 @@ mkdir md-mermaid-export && cd md-mermaid-export
 npm init -y
 npm i markdown-it markdown-it-task-lists mermaid puppeteer github-markdown-css
 ```
+
+# Example 
+
+```bash
+bin/./md-mermaid-export.mjs example/test.md --format html --out example/test.html
+
+```

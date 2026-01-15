@@ -1,28 +1,40 @@
-# markdown-with-mermaid-to-html-pdf
-Script to take a markdown file with embedded mermaid and export a html or pdf file with the mermaid rendered inline w/the markdown.
+# Markdown Mermaid Export (VS Code Extension)
+Export Markdown files with Mermaid diagrams to HTML or PDF directly from VS Code.
 
+## Features
+- Export the current Markdown file to HTML with rendered Mermaid diagrams.
+- Export the current Markdown file to PDF via Puppeteer.
+- Configure Mermaid theme/security and PDF settings in VS Code settings.
 
-# Prerequisites
+## Usage (VS Code)
+1. Open a Markdown file.
+2. Run **“Markdown Mermaid: Export to HTML”** or **“Markdown Mermaid: Export to PDF”** from the Command Palette.
+3. Choose an output file location.
 
-```bash
-mkdir md-mermaid-export && cd md-mermaid-export
-npm init -y
-npm i markdown-it markdown-it-task-lists mermaid puppeteer github-markdown-css
-```
+### Settings
+Configure in `settings.json` under the `markdownWithMermaidExport` prefix:
+- `markdownWithMermaidExport.mermaidTheme`
+- `markdownWithMermaidExport.securityLevel`
+- `markdownWithMermaidExport.pdfFormat`
+- `markdownWithMermaidExport.pdfMarginMm`
+- `markdownWithMermaidExport.timeoutMs`
+- `markdownWithMermaidExport.keepHtml`
+- `markdownWithMermaidExport.chromePath`
 
-# Example 
+## CLI (optional)
+The original CLI script still works for direct usage.
 
-## To HTML
+### To HTML
 ```bash
 bin/md-mermaid-export.mjs example/test.md --format html --out example/test.html
 ```
 
-## TO PDF
+### TO PDF
 ```bash
 bin/md-mermaid-export.mjs example/test.md --format pdf --out example/test.pdf
 ```
 
-## Other Knobs
+### Other Knobs
 ```bash
 
 ./md-mermaid-export.mjs README.md --format pdf --out README.pdf \
@@ -35,7 +47,7 @@ bin/md-mermaid-export.mjs example/test.md --format pdf --out example/test.pdf
 
 ```
 
-## Use Server Chrome/Chromium
+### Use Server Chrome/Chromium
 
 ```bash
 ./md-mermaid-export.mjs README.md --format pdf --out README.pdf --chrome /usr/bin/chromium-browser

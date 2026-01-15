@@ -1,15 +1,100 @@
 {
   "name": "markdown-with-mermaid-to-html-pdf",
   "version": "1.0.0",
-  "description": "Script to take a markdown file with embedded mermaid and export a html or pdf file with the mermaid rendered inline w/the markdown.",
-  "main": "index.js",
+  "description": "VS Code extension to export Markdown with Mermaid to HTML or PDF.",
+  "type": "module",
+  "main": "./src/extension.js",
+  "publisher": "local",
+  "displayName": "Markdown Mermaid Export",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:markdownWithMermaid.exportHtml",
+    "onCommand:markdownWithMermaid.exportPdf"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "markdownWithMermaid.exportHtml",
+        "title": "Markdown Mermaid: Export to HTML"
+      },
+      {
+        "command": "markdownWithMermaid.exportPdf",
+        "title": "Markdown Mermaid: Export to PDF"
+      }
+    ],
+    "configuration": {
+      "title": "Markdown Mermaid Export",
+      "properties": {
+        "markdownWithMermaidExport.mermaidTheme": {
+          "type": "string",
+          "default": "default",
+          "enum": [
+            "default",
+            "dark",
+            "forest",
+            "neutral"
+          ],
+          "description": "Mermaid theme used for rendering diagrams."
+        },
+        "markdownWithMermaidExport.securityLevel": {
+          "type": "string",
+          "default": "strict",
+          "enum": [
+            "strict",
+            "loose",
+            "antiscript"
+          ],
+          "description": "Mermaid security level."
+        },
+        "markdownWithMermaidExport.pdfFormat": {
+          "type": "string",
+          "default": "A4",
+          "description": "PDF paper format (e.g., A4, Letter)."
+        },
+        "markdownWithMermaidExport.pdfMarginMm": {
+          "type": "number",
+          "default": 15,
+          "description": "PDF margin in millimeters."
+        },
+        "markdownWithMermaidExport.timeoutMs": {
+          "type": "number",
+          "default": 60000,
+          "description": "Timeout for Mermaid rendering before PDF export."
+        },
+        "markdownWithMermaidExport.keepHtml": {
+          "type": "boolean",
+          "default": false,
+          "description": "Keep the intermediate HTML file when exporting to PDF."
+        },
+        "markdownWithMermaidExport.chromePath": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null,
+          "description": "Optional path to a system Chrome/Chromium executable."
+        }
+      }
+    }
+  },
   "directories": {
     "example": "example"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "vscode",
+    "markdown",
+    "mermaid",
+    "pdf",
+    "html"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {

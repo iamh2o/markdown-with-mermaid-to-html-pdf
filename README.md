@@ -12,7 +12,12 @@ npm i markdown-it markdown-it-task-lists mermaid puppeteer github-markdown-css
 
 # Example 
 
+## To HTML
 ```bash
-bin/./md-mermaid-export.mjs example/test.md --format html --out example/test.html
+bin/md-mermaid-export.mjs example/test.md --format html --out example/test.html
+```
 
+## TO PDF
+```bash
+bin/md-mermaid-export.mjs example/test.md --format pdf --out example/test.pdf
 ```

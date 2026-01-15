@@ -21,3 +21,22 @@ bin/md-mermaid-export.mjs example/test.md --format html --out example/test.html
 ```bash
 bin/md-mermaid-export.mjs example/test.md --format pdf --out example/test.pdf
 ```
+
+## Other Knobs
+```bash
+
+./md-mermaid-export.mjs README.md --format pdf --out README.pdf \
+  --mermaid-theme dark \
+  --security strict \
+  --pdf-format Letter \
+  --pdf-margin 12 \
+  --timeout-ms 120000 \
+  --keep-html
+
+```
+
+## Use Server Chrome/Chromium
+
+```bash
+./md-mermaid-export.mjs README.md --format pdf --out README.pdf --chrome /usr/bin/chromium-browser
+```

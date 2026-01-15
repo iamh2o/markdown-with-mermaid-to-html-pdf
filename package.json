@@ -1,0 +1,22 @@
+{
+  "name": "markdown-with-mermaid-to-html-pdf",
+  "version": "1.0.0",
+  "description": "Script to take a markdown file with embedded mermaid and export a html or pdf file with the mermaid rendered inline w/the markdown.",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "github-markdown-css": "^5.8.1",
+    "markdown-it": "^14.1.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "mermaid": "^11.12.2",
+    "puppeteer": "^24.35.0"
+  }
+}

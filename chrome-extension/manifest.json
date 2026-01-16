@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Mermaid Markdown Renderer",
+  "version": "0.1.0",
+  "description": "Detects Mermaid markdown blocks on web pages and renders them inline.",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-script.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["mermaid.min.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

@@ -21,6 +21,21 @@ Configure in `settings.json` under the `markdownWithMermaidExport` prefix:
 - `markdownWithMermaidExport.keepHtml`
 - `markdownWithMermaidExport.chromePath`
 
+## Chrome Extension
+A lightweight Chrome extension is available in the `chrome-extension/` folder. It detects Mermaid code fences on web pages and renders diagrams in-place.
+
+### Load in Chrome
+1. Open `chrome://extensions`.
+2. Enable **Developer mode**.
+3. Click **Load unpacked** and select the `chrome-extension/` folder.
+4. Visit any page that contains Mermaid markdown (for example, a GitHub README with a Mermaid code block).
+
+### Supported Mermaid Markup
+The content script looks for common Mermaid markdown forms:
+- ` ```mermaid ... ``` ` fenced blocks.
+- `<pre><code class="language-mermaid">` / `<code class="lang-mermaid">`.
+- `<pre class="mermaid">` or `<code class="mermaid">`.
+
 ## CLI (optional)
 The original CLI script still works for direct usage.
 

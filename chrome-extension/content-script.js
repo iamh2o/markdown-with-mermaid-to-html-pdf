@@ -3,15 +3,20 @@
     "pre.mermaid",
     "code.mermaid",
     "pre > code.language-mermaid",
+    "code.language-mermaid",
     "pre > code.lang-mermaid",
+    "code.lang-mermaid",
     "pre > code[data-language='mermaid']",
-    "pre > code[data-lang='mermaid']"
+    "pre > code[data-lang='mermaid']",
+    "code[data-language='mermaid']",
+    "code[data-lang='mermaid']"
   ];
 
   const MERMAID_FENCE_RE = /^```mermaid\s*([\s\S]*?)```\s*$/i;
 
   let mermaidReady = null;
   let runScheduled = false;
+  let contextTarget = null;
 
   function ensureMermaidLoaded() {
     if (window.mermaid) {
@@ -60,6 +65,16 @@
     container.textContent = source.trim();
 
     node.replaceWith(container);
+  }
+
+  function promoteToMermaid(node, source) {
+    if (!node || !source || !source.trim()) {
+      return;
+    }
+
+    node.classList.add("mermaid");
+    node.dataset.mermaidRenderer = "pending";
+    node.textContent = source.trim();
   }
 
   function processCodeBlocks() {
@@ -155,4 +170,32 @@
   });
 
   renderMermaid();
+
+  document.addEventListener("contextmenu", (event) => {
+    const target = event.target instanceof Element ? event.target.closest("div") : null;
+    if (!target) {
+      contextTarget = null;
+      return;
+    }
+
+    contextTarget = target;
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!contextTarget) {
+      return;
+    }
+
+    if (event.key.toLowerCase() !== "m" || !event.altKey) {
+      return;
+    }
+
+    const source = contextTarget.textContent || "";
+    if (!source.trim()) {
+      return;
+    }
+
+    promoteToMermaid(contextTarget, source);
+    renderMermaid();
+  });
 })();

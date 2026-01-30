@@ -1,6 +1,17 @@
 # Markdown Mermaid Export (VS Code Extension)
 Export Markdown files with Mermaid diagrams to HTML or PDF directly from VS Code.
 
+## ENVIRONMENT
+
+### conda
+
+```bash
+
+conda create -n MMDMD -c conda-forge nodejs
+conda activate MMDMD
+npm install markdown-it
+```
+
 ## Features
 - Export the current Markdown file to HTML with rendered Mermaid diagrams.
 - Export the current Markdown file to PDF via Puppeteer.
